@@ -359,3 +359,279 @@ a { color: inherit; text-decoration: none; }
   .about__stats { justify-content: center; }
   .nav__links { display: none; }
 }
+
+/* ========================
+   ASCII TOGGLE BUTTON
+======================== */
+.ascii-toggle {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.ascii-toggle:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.ascii-toggle__on { display: none; }
+.ascii-toggle__off { display: inline; }
+
+/* In ASCII mode the toggle itself also goes borderless */
+body.ascii-mode .ascii-toggle {
+  border: none !important;
+  color: var(--accent);
+}
+
+/* ========================
+   ASCII MODE
+======================== */
+
+/* Helper: full-width text separator line (overflows + clips = fills any width) */
+/* Usage: set content to a long string of "─ ─ ─ ─ ..." chars */
+.ascii-sep {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  color: var(--accent);
+  opacity: 0.4;
+}
+
+body.ascii-mode {
+  --accent: #00ff41;
+  --accent-2: #39ff14;
+  --bg: #020d02;
+  --bg-dark: #010801;
+  --surface: #041504;
+  --surface-2: #071f07;
+  --text: #c8ffcc;
+  --text-muted: #5a9960;
+  --border: rgba(0,255,65,0.25);
+  font-family: 'Courier New', Courier, monospace;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='14'%3E%3Ctext y='12' font-family='Courier New' font-size='10' fill='rgba(0%2C255%2C65%2C0.04)'%3E01101001011010000110100101100100%3C/text%3E%3C/svg%3E");
+}
+
+/* Toggle */
+body.ascii-mode .ascii-toggle__on  { display: inline; }
+body.ascii-mode .ascii-toggle__off { display: none; }
+
+/* Kill all border-radius + animations */
+body.ascii-mode *,
+body.ascii-mode *::before,
+body.ascii-mode *::after {
+  border-radius: 0 !important;
+  animation: none !important;
+}
+
+/* ── NAV ───────────────────────────────────────────── */
+body.ascii-mode .nav {
+  border-bottom: none !important;
+  background: rgba(2,13,2,0.95);
+  position: relative;
+}
+/* text line under nav */
+body.ascii-mode .nav::after {
+  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  overflow: hidden; white-space: nowrap;
+  font-family: 'Courier New', monospace; font-size: 0.7rem;
+  color: var(--accent); opacity: 0.45; line-height: 1;
+}
+body.ascii-mode .nav__logo { font-family: 'Courier New', monospace; letter-spacing: 0.1em; }
+body.ascii-mode .nav__logo::before { content: '> '; }
+
+/* ── HERO ──────────────────────────────────────────── */
+body.ascii-mode .hero__tag { color: var(--accent); letter-spacing: 0.1em; }
+body.ascii-mode .hero__tag::before { content: '// '; }
+body.ascii-mode .hero__subtitle { color: var(--text-muted); }
+body.ascii-mode .hero__subtitle::before { content: '/* '; }
+body.ascii-mode .hero__subtitle::after  { content: ' */'; }
+
+/* ── BUTTONS: no border, text brackets ─────────────── */
+body.ascii-mode .btn--primary {
+  background: transparent;
+  border: none !important;
+  box-shadow: none;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+body.ascii-mode .btn--primary::before { content: '[ '; }
+body.ascii-mode .btn--primary::after  { content: ' ]'; }
+
+body.ascii-mode .btn--outline {
+  border: none !important;
+  color: var(--text-muted);
+}
+body.ascii-mode .btn--outline::before { content: '[ '; }
+body.ascii-mode .btn--outline::after  { content: ' ]'; }
+
+body.ascii-mode .btn:hover {
+  background: rgba(0,255,65,0.08);
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── AVATAR ─────────────────────────────────────────── */
+body.ascii-mode .avatar-ring {
+  background: none;
+  border: 2px solid var(--accent); /* circle ring — text can't be circular */
+  box-shadow: 0 0 20px rgba(0,255,65,0.3), inset 0 0 20px rgba(0,255,65,0.05);
+}
+body.ascii-mode .avatar-inner {
+  font-size: 1.6rem; font-family: 'Courier New', monospace;
+  -webkit-text-fill-color: var(--accent); color: var(--accent);
+  background: none; letter-spacing: -0.05em; line-height: 1.2;
+  display: flex; align-items: center; justify-content: center;
+  text-shadow: 0 0 10px rgba(0,255,65,0.8);
+}
+body.ascii-mode .avatar-inner::before {
+  content: ".--.\n|DN|\n'--'";
+  white-space: pre; font-size: 1.4rem;
+}
+
+/* ── SECTION TITLES ─────────────────────────────────── */
+body.ascii-mode .section__title { letter-spacing: 0.1em; }
+body.ascii-mode .section__title::before { content: '## '; color: var(--accent); }
+/* text underline instead of border-bottom */
+body.ascii-mode .section__title::after {
+  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
+  display: block; overflow: hidden; white-space: nowrap;
+  font-family: 'Courier New', monospace; font-size: 0.7rem;
+  color: var(--accent); background: none; border: none;
+  opacity: 0.55; margin-top: 0.3rem; width: 100%;
+}
+
+/* ── CARDS: JS text boxes, no CSS border ────────────── */
+.ascii-box {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0;
+  border: none !important; background: none !important;
+}
+body.ascii-mode .skill-card,
+body.ascii-mode .project-card {
+  border: none !important;
+  box-shadow: none !important;
+  background: var(--surface);
+  position: relative;
+}
+body.ascii-mode .skill-card::before, body.ascii-mode .skill-card::after,
+body.ascii-mode .project-card::before, body.ascii-mode .project-card::after {
+  display: none !important;
+}
+body.ascii-mode .skill-card > *:not(.ascii-box),
+body.ascii-mode .project-card > *:not(.ascii-box) {
+  position: relative; z-index: 1;
+}
+body.ascii-mode .skill-card:hover,
+body.ascii-mode .project-card:hover {
+  box-shadow: none !important; transform: none;
+}
+
+body.ascii-mode .skill-card__icon { filter: grayscale(1); }
+body.ascii-mode .skill-card h3::before    { content: '> '; color: var(--accent); }
+body.ascii-mode .project-card h3::before  { content: '$ '; color: var(--accent); }
+
+/* list item separators → text dots */
+body.ascii-mode .skill-card ul li {
+  border-bottom: none !important;
+}
+body.ascii-mode .skill-card ul li::before {
+  content: '· ';
+  color: var(--accent); opacity: 0.7;
+}
+
+/* ── PROJECT TAGS: no border, text brackets ─────────── */
+body.ascii-mode .project-card__tag {
+  background: transparent;
+  border: none !important;
+  color: var(--accent); letter-spacing: 0.1em; font-size: 0.7rem;
+}
+body.ascii-mode .project-card__tag::before { content: '['; }
+body.ascii-mode .project-card__tag::after  { content: ']'; }
+
+/* tech tags: no border, <angle> wrappers */
+body.ascii-mode .project-card__tech span {
+  background: transparent;
+  border: none !important;
+  color: var(--text-muted);
+}
+body.ascii-mode .project-card__tech span::before { content: '<'; }
+body.ascii-mode .project-card__tech span::after  { content: '>'; }
+
+/* ── TIMELINE: vertical text chars instead of border-left */
+body.ascii-mode .timeline__item {
+  border-left: none !important;
+  /* vertical │ chars rendered via repeating SVG background */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='20'%3E%3Ctext y='16' font-family='Courier New' font-size='14' fill='rgba(0%2C255%2C65%2C0.35)'%3E%7C%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat-y;
+  background-position: left top;
+  background-size: 10px 20px;
+}
+body.ascii-mode .timeline__item::before {
+  background: var(--accent); box-shadow: 0 0 6px var(--accent);
+  content: '*'; color: var(--accent); display: flex;
+  align-items: center; justify-content: center;
+  font-family: 'Courier New', monospace; font-size: 0.6rem;
+}
+body.ascii-mode .timeline__year { color: var(--accent); }
+body.ascii-mode .timeline__content h4::before { content: '→ '; }
+
+/* ── STATS ───────────────────────────────────────────── */
+body.ascii-mode .stat__number {
+  -webkit-text-fill-color: var(--accent); color: var(--accent);
+  background: none; text-shadow: 0 0 10px rgba(0,255,65,0.5); font-size: 2rem;
+}
+
+/* ── SECTIONS: text lines instead of borders ────────── */
+body.ascii-mode .section--dark {
+  background: var(--surface);
+  border-top: none !important;
+  border-bottom: none !important;
+  position: relative;
+}
+body.ascii-mode .section--dark::before,
+body.ascii-mode .section--dark::after {
+  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
+  display: block; overflow: hidden; white-space: nowrap;
+  font-family: 'Courier New', monospace; font-size: 0.7rem;
+  color: var(--accent); opacity: 0.3; line-height: 1.4;
+  padding: 0 2rem;
+}
+
+/* ── CONTACT LINKS: no border, text brackets ────────── */
+body.ascii-mode .contact__link {
+  border: none !important;
+  font-family: 'Courier New', monospace; letter-spacing: 0.05em;
+}
+body.ascii-mode .contact__link::before { content: '[ '; }
+body.ascii-mode .contact__link::after  { content: ' ]'; }
+body.ascii-mode .contact__link:hover {
+  color: var(--accent); box-shadow: none; transform: none;
+}
+
+/* ── FOOTER: text line instead of border-top ─────────── */
+body.ascii-mode .footer {
+  border-top: none !important;
+  font-family: 'Courier New', monospace;
+}
+body.ascii-mode .footer::before {
+  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
+  display: block; overflow: hidden; white-space: nowrap;
+  font-family: 'Courier New', monospace; font-size: 0.7rem;
+  color: var(--accent); opacity: 0.35; line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+/* ── SCROLLBAR ───────────────────────────────────────── */
+body.ascii-mode ::-webkit-scrollbar { width: 6px; }
+body.ascii-mode ::-webkit-scrollbar-track { background: var(--bg); }
+body.ascii-mode ::-webkit-scrollbar-thumb { background: var(--accent); }
