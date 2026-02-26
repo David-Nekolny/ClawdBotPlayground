@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Novák – Vývojář & Inovator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__logo">DN</div>
+    <ul class="nav__links">
+      <li><a href="#about">O mně</a></li>
+      <li><a href="#skills">Dovednosti</a></li>
+      <li><a href="#projects">Projekty</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero__content">
+      <span class="hero__tag">👋 Ahoj, já jsem</span>
+      <h1 class="hero__name">David <span class="accent">Novák</span></h1>
+      <p class="hero__subtitle">Full-stack vývojář · UI/UX nadšenec · Open-source přispěvatel</p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--primary">Moje projekty</a>
+        <a href="#contact" class="btn btn--outline">Kontaktuj mě</a>
+      </div>
+    </div>
+    <div class="hero__avatar">
+      <div class="avatar-ring">
+        <div class="avatar-inner">DN</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section__title">O mně</h2>
+      <div class="about__grid">
+        <div class="about__text">
+          <p>Jsem vývojář z Prahy s více než 8 lety zkušeností v oblasti webového vývoje. Baví mě tvořit produkty, které jsou nejen funkční, ale i krásné a intuitivní.</p>
+          <p>Ve volném čase přispívám do open-source projektů, experimentuji s AI nástroji a chodím na výlety do hor s kamarádem Artiem. 🤖</p>
+          <div class="about__stats">
+            <div class="stat">
+              <span class="stat__number">8+</span>
+              <span class="stat__label">let zkušeností</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">42</span>
+              <span class="stat__label">projektů</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number">3</span>
+              <span class="stat__label">open-source balíčky</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__timeline">
+          <div class="timeline__item">
+            <span class="timeline__year">2024</span>
+            <div class="timeline__content">
+              <h4>Senior Full-stack Developer</h4>
+              <p>TechVision s.r.o., Praha</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__year">2021</span>
+            <div class="timeline__content">
+              <h4>Lead Frontend Developer</h4>
+              <p>Startup Nexus, Praha</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__year">2018</span>
+            <div class="timeline__content">
+              <h4>Junior Developer</h4>
+              <p>WebCraft Agency, Brno</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__year">2016</span>
+            <div class="timeline__content">
+              <h4>Bc. Informatika</h4>
+              <p>ČVUT FIT, Praha</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section--dark" id="skills">
+    <div class="container">
+      <h2 class="section__title">Dovednosti</h2>
+      <div class="skills__grid">
+        <div class="skill-card">
+          <div class="skill-card__icon">⚡</div>
+          <h3>Frontend</h3>
+          <ul>
+            <li>React / Next.js</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+            <li>Vue.js</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon">🛠️</div>
+          <h3>Backend</h3>
+          <ul>
+            <li>Node.js / Express</li>
+            <li>Python / FastAPI</li>
+            <li>PostgreSQL / Redis</li>
+            <li>GraphQL</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon">☁️</div>
+          <h3>DevOps & Cloud</h3>
+          <ul>
+            <li>Docker / Kubernetes</li>
+            <li>AWS / Vercel</li>
+            <li>GitHub Actions</li>
+            <li>Terraform</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon">🤖</div>
+          <h3>AI & Automation</h3>
+          <ul>
+            <li>OpenAI API</li>
+            <li>LangChain</li>
+            <li>AI agenti</li>
+            <li>Workflow automatizace</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section__title">Vybrané projekty</h2>
+      <div class="projects__grid">
+        <div class="project-card">
+          <div class="project-card__header">
+            <span class="project-card__tag">SaaS</span>
+            <span class="project-card__year">2024</span>
+          </div>
+          <h3>FlowBoard</h3>
+          <p>Real-time projektové řízení pro distribuované týmy. Přes 1 200 aktivních uživatelů, Next.js + WebSockets.</p>
+          <div class="project-card__tech">
+            <span>Next.js</span><span>WebSockets</span><span>PostgreSQL</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card__header">
+            <span class="project-card__tag">Open-source</span>
+            <span class="project-card__year">2023</span>
+          </div>
+          <h3>CzechForm</h3>
+          <p>React knihovna pro české formuláře s validací DIČ, IČO a bankovních účtů. 3 400+ hvězd na GitHubu.</p>
+          <div class="project-card__tech">
+            <span>React</span><span>TypeScript</span><span>npm</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card__header">
+            <span class="project-card__tag">AI</span>
+            <span class="project-card__year">2025</span>
+          </div>
+          <h3>DocuMind</h3>
+          <p>AI asistent pro analýzu dokumentů a smluv. Integruje GPT-4 s RAG přístupem pro přesné odpovědi.</p>
+          <div class="project-card__tech">
+            <span>Python</span><span>LangChain</span><span>FastAPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
+    <div class="container contact__container">
+      <h2 class="section__title">Kontakt</h2>
+      <p class="contact__subtitle">Pracuju na zajímavých projektech a vždy rád potkám nové lidi. Napiš mi!</p>
+      <div class="contact__links">
+        <a href="mailto:david.novak@example.com" class="contact__link">
+          <span>✉️</span> david.novak@example.com
+        </a>
+        <a href="https://github.com/dnekolny" class="contact__link" target="_blank">
+          <span>🐙</span> github.com/dnekolny
+        </a>
+        <a href="https://linkedin.com/in/david-novak-dev" class="contact__link" target="_blank">
+          <span>💼</span> linkedin.com/in/david-novak-dev
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 David Novák · Postaveno s ❤️ (a trochou AI magie 🤖)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
