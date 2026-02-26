@@ -38,8 +38,10 @@ function drawAsciiBox(el) {
   const cols = Math.max(6, Math.round(el.clientWidth  / w));
   const rows = Math.max(4, Math.round(el.clientHeight / h));
 
-  const hBar  = '─'.repeat(Math.max(0, cols - 2));
-  const blank = ' '.repeat(Math.max(0, cols - 2));
+  // Alternate dash + space so it's clearly text, not a CSS border: ─ ─ ─ ─ ─ ─
+  const inner = Math.max(0, cols - 2);
+  const hBar  = Array.from({ length: inner }, (_, i) => i % 2 === 0 ? '─' : ' ').join('');
+  const blank = ' '.repeat(inner);
   const lines = [
     '┌' + hBar  + '┐',
     ...Array.from({ length: Math.max(0, rows - 2) }, () => '│' + blank + '│'),
