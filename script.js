@@ -1,3 +1,18 @@
+// ASCII Mode Toggle
+const asciiToggle = document.getElementById('asciiToggle');
+const ASCII_KEY = 'ascii-mode';
+
+// Restore preference
+if (localStorage.getItem(ASCII_KEY) === '1') {
+  document.body.classList.add('ascii-mode');
+}
+
+asciiToggle.addEventListener('click', () => {
+  document.body.classList.toggle('ascii-mode');
+  const isAscii = document.body.classList.contains('ascii-mode');
+  localStorage.setItem(ASCII_KEY, isAscii ? '1' : '0');
+});
+
 // Smooth reveal on scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
