@@ -499,44 +499,43 @@ body.ascii-mode .section__title::after {
   width: 100%;
 }
 
-/* Cards — ASCII box borders */
+/* ASCII Box — JS-generated <pre> replaces CSS borders */
+.ascii-box {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border: none !important;
+  background: none !important;
+}
+
+/* Cards: no CSS border — JS draws real text boxes instead */
 body.ascii-mode .skill-card,
 body.ascii-mode .project-card {
-  border: 1px solid var(--accent);
+  border: none !important;
+  box-shadow: none !important;
   background: var(--surface);
   position: relative;
 }
 
+/* Hide old ::before/::after +---+ lines (replaced by JS text boxes) */
 body.ascii-mode .skill-card::before,
-body.ascii-mode .project-card::before {
-  content: '+------------------------+';
-  display: block;
-  font-family: 'Courier New', monospace;
-  font-size: 0.6rem;
-  color: var(--accent);
-  opacity: 0.5;
-  margin-bottom: 0.5rem;
-  overflow: hidden;
-  letter-spacing: 0.15em;
+body.ascii-mode .skill-card::after,
+body.ascii-mode .project-card::before,
+body.ascii-mode .project-card::after {
+  display: none !important;
 }
 
-body.ascii-mode .skill-card::after,
-body.ascii-mode .project-card::after {
-  content: '+------------------------+';
-  display: block;
-  font-family: 'Courier New', monospace;
-  font-size: 0.6rem;
-  color: var(--accent);
-  opacity: 0.5;
-  margin-top: 0.75rem;
-  overflow: hidden;
-  letter-spacing: 0.15em;
+/* Card children float above the ASCII <pre> overlay */
+body.ascii-mode .skill-card > *:not(.ascii-box),
+body.ascii-mode .project-card > *:not(.ascii-box) {
+  position: relative;
+  z-index: 1;
 }
 
 body.ascii-mode .skill-card:hover,
 body.ascii-mode .project-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 0 16px rgba(0,255,65,0.25);
+  box-shadow: 0 0 16px rgba(0,255,65,0.15) !important;
   transform: none;
 }
 
