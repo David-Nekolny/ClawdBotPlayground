@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David Novák – Vývojář & Inovator</title>
+  <title>David Nekolný – .NET Full-Stack Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -17,16 +17,21 @@
       <li><a href="#about">O mně</a></li>
       <li><a href="#skills">Dovednosti</a></li>
       <li><a href="#projects">Projekty</a></li>
+      <li><a href="#services">Na zakázku</a></li>
       <li><a href="#contact">Kontakt</a></li>
     </ul>
+    <button class="ascii-toggle" id="asciiToggle" title="Přepnout ASCII mód">
+      <span class="ascii-toggle__off">⬡ ASCII</span>
+      <span class="ascii-toggle__on">[■ MODERN]</span>
+    </button>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="hero">
     <div class="hero__content">
       <span class="hero__tag">👋 Ahoj, já jsem</span>
-      <h1 class="hero__name">David <span class="accent">Novák</span></h1>
-      <p class="hero__subtitle">Full-stack vývojář · UI/UX nadšenec · Open-source přispěvatel</p>
+      <h1 class="hero__name">David <span class="accent">Nekolný</span></h1>
+      <p class="hero__subtitle">.NET Full-Stack Developer · Angular · Blazor</p>
       <div class="hero__cta">
         <a href="#projects" class="btn btn--primary">Moje projekty</a>
         <a href="#contact" class="btn btn--outline">Kontaktuj mě</a>
@@ -45,20 +50,20 @@
       <h2 class="section__title">O mně</h2>
       <div class="about__grid">
         <div class="about__text">
-          <p>Jsem vývojář z Prahy s více než 8 lety zkušeností v oblasti webového vývoje. Baví mě tvořit produkty, které jsou nejen funkční, ale i krásné a intuitivní.</p>
-          <p>Ve volném čase přispívám do open-source projektů, experimentuji s AI nástroji a chodím na výlety do hor s kamarádem Artiem. 🤖</p>
+          <p>Jsem nadšený vývojář webových aplikací se zaměřením na prostředí .NET. Rád se učím nové věci a aktivně se snažím zdokonalovat své dovednosti. Mám smysl pro detail, jsem přátelský a schopný pracovat v týmu.</p>
+          <p>Ve volném čase mě baví sport — lezení a cyklistika, cestování do hor a samozřejmě programování. 🏔️</p>
           <div class="about__stats">
             <div class="stat">
-              <span class="stat__number">8+</span>
+              <span class="stat__number">10+</span>
               <span class="stat__label">let zkušeností</span>
             </div>
             <div class="stat">
-              <span class="stat__number">42</span>
-              <span class="stat__label">projektů</span>
+              <span class="stat__number">Ing.</span>
+              <span class="stat__label">Aplikovaná Informatika</span>
             </div>
             <div class="stat">
               <span class="stat__number">3</span>
-              <span class="stat__label">open-source balíčky</span>
+              <span class="stat__label">enterprise klienti</span>
             </div>
           </div>
         </div>
@@ -66,29 +71,29 @@
           <div class="timeline__item">
             <span class="timeline__year">2024</span>
             <div class="timeline__content">
-              <h4>Senior Full-stack Developer</h4>
-              <p>TechVision s.r.o., Praha</p>
+              <h4>Full-Stack Developer</h4>
+              <p>Verisoft · .NET / Angular / Blazor</p>
             </div>
           </div>
           <div class="timeline__item">
-            <span class="timeline__year">2021</span>
+            <span class="timeline__year">2015</span>
             <div class="timeline__content">
-              <h4>Lead Frontend Developer</h4>
-              <p>Startup Nexus, Praha</p>
+              <h4>.NET Web Developer</h4>
+              <p>EPASS s.r.o., Praha</p>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <span class="timeline__year">2022</span>
+            <div class="timeline__content">
+              <h4>Ing. – Aplikovaná Informatika</h4>
+              <p>Univerzita Hradec Králové</p>
             </div>
           </div>
           <div class="timeline__item">
             <span class="timeline__year">2018</span>
             <div class="timeline__content">
-              <h4>Junior Developer</h4>
-              <p>WebCraft Agency, Brno</p>
-            </div>
-          </div>
-          <div class="timeline__item">
-            <span class="timeline__year">2016</span>
-            <div class="timeline__content">
-              <h4>Bc. Informatika</h4>
-              <p>ČVUT FIT, Praha</p>
+              <h4>Bc. – Aplikovaná Informatika</h4>
+              <p>Univerzita Hradec Králové</p>
             </div>
           </div>
         </div>
@@ -102,43 +107,43 @@
       <h2 class="section__title">Dovednosti</h2>
       <div class="skills__grid">
         <div class="skill-card">
+          <div class="skill-card__icon">🛠️</div>
+          <h3>.NET Ekosystém</h3>
+          <ul>
+            <li>ASP.NET / C#</li>
+            <li>Blazor (WASM & Server)</li>
+            <li>WCF / SOAP</li>
+            <li>.NET knihovny</li>
+          </ul>
+        </div>
+        <div class="skill-card">
           <div class="skill-card__icon">⚡</div>
           <h3>Frontend</h3>
           <ul>
-            <li>React / Next.js</li>
-            <li>TypeScript</li>
-            <li>Tailwind CSS</li>
-            <li>Vue.js</li>
+            <li>Angular</li>
+            <li>JavaScript / TypeScript</li>
+            <li>HTML &amp; CSS</li>
+            <li>Tailwind / Bootstrap</li>
           </ul>
         </div>
         <div class="skill-card">
-          <div class="skill-card__icon">🛠️</div>
-          <h3>Backend</h3>
+          <div class="skill-card__icon">🗄️</div>
+          <h3>Databáze &amp; Backend</h3>
           <ul>
-            <li>Node.js / Express</li>
-            <li>Python / FastAPI</li>
-            <li>PostgreSQL / Redis</li>
-            <li>GraphQL</li>
-          </ul>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card__icon">☁️</div>
-          <h3>DevOps & Cloud</h3>
-          <ul>
-            <li>Docker / Kubernetes</li>
-            <li>AWS / Vercel</li>
-            <li>GitHub Actions</li>
-            <li>Terraform</li>
+            <li>MS SQL Server</li>
+            <li>SQL procedury</li>
+            <li>REST API</li>
+            <li>Docker</li>
           </ul>
         </div>
         <div class="skill-card">
           <div class="skill-card__icon">🤖</div>
-          <h3>AI & Automation</h3>
+          <h3>AI &amp; Automatizace</h3>
           <ul>
-            <li>OpenAI API</li>
-            <li>LangChain</li>
-            <li>AI agenti</li>
-            <li>Workflow automatizace</li>
+            <li>Automatizace procesů pomocí AI</li>
+            <li>AI agenti &amp; workflow nástroje</li>
+            <li>Integrace LLM do aplikací</li>
+            <li>Optimalizace opakujících se úkolů</li>
           </ul>
         </div>
       </div>
@@ -152,37 +157,80 @@
       <div class="projects__grid">
         <div class="project-card">
           <div class="project-card__header">
-            <span class="project-card__tag">SaaS</span>
+            <span class="project-card__tag">Enterprise</span>
             <span class="project-card__year">2024</span>
           </div>
-          <h3>FlowBoard</h3>
-          <p>Real-time projektové řízení pro distribuované týmy. Přes 1 200 aktivních uživatelů, Next.js + WebSockets.</p>
+          <h3>Verisoft – klientské projekty</h3>
+          <p>Full-stack vývoj pro enterprise klienty Grafton / GI Group, TAČR a ČSOB. Technologie .NET, Angular a Blazor.</p>
           <div class="project-card__tech">
-            <span>Next.js</span><span>WebSockets</span><span>PostgreSQL</span>
+            <span>.NET</span><span>Angular</span><span>Blazor</span>
           </div>
         </div>
         <div class="project-card">
           <div class="project-card__header">
-            <span class="project-card__tag">Open-source</span>
-            <span class="project-card__year">2023</span>
+            <span class="project-card__tag">PWA</span>
+            <span class="project-card__year">2022</span>
           </div>
-          <h3>CzechForm</h3>
-          <p>React knihovna pro české formuláře s validací DIČ, IČO a bankovních účtů. 3 400+ hvězd na GitHubu.</p>
+          <h3>Interní PWA aplikace</h3>
+          <p>Progressive Web App pro rychlé vyhledávání kontaktů na partnery. Realtime data přes SOAP integraci.</p>
           <div class="project-card__tech">
-            <span>React</span><span>TypeScript</span><span>npm</span>
+            <span>Blazor WASM</span><span>SOAP</span><span>Tailwind</span>
           </div>
         </div>
         <div class="project-card">
           <div class="project-card__header">
-            <span class="project-card__tag">AI</span>
-            <span class="project-card__year">2025</span>
+            <span class="project-card__tag">Web App</span>
+            <span class="project-card__year">2020</span>
           </div>
-          <h3>DocuMind</h3>
-          <p>AI asistent pro analýzu dokumentů a smluv. Integruje GPT-4 s RAG přístupem pro přesné odpovědi.</p>
+          <h3>Servisní portál ENBRA</h3>
+          <p>Webová aplikace pro servisní techniky firmy ENBRA, a.s. Správa zakázek a servisních úkonů v terénu.</p>
           <div class="project-card__tech">
-            <span>Python</span><span>LangChain</span><span>FastAPI</span>
+            <span>ASP.NET</span><span>MS SQL</span><span>Bootstrap</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--dark" id="services">
+    <div class="container">
+      <h2 class="section__title">Webové aplikace na zakázku</h2>
+      <p class="contact__subtitle">Vyvíjím webové aplikace na míru — od jednoduchých prezentačních webů až po komplexní systémy.</p>
+      <div class="skills__grid">
+        <div class="skill-card">
+          <div class="skill-card__icon">🎨</div>
+          <h3>Prezentační weby</h3>
+          <ul>
+            <li>Minimalistický &amp; moderní design</li>
+            <li>Responzivní pro mobil i desktop</li>
+            <li>Rychlé a přehledné stránky</li>
+            <li>Ideální pro firmy &amp; živnostníky</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon">⚙️</div>
+          <h3>Komplexní webové aplikace</h3>
+          <ul>
+            <li>Full-stack řešení na míru</li>
+            <li>Databáze, API, business logika</li>
+            <li>Integrace externích systémů</li>
+            <li>.NET, Angular, Blazor</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card__icon">🤖</div>
+          <h3>Automatizace pomocí AI</h3>
+          <ul>
+            <li>Automatizace firemních procesů</li>
+            <li>AI agenti &amp; chytré workflow</li>
+            <li>Integrace AI do stávajících systémů</li>
+            <li>Úspora času &amp; lidských zdrojů</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top: 2.5rem;">
+        <a href="#contact" class="btn btn--primary">Nezávazně poptat</a>
       </div>
     </div>
   </section>
@@ -193,21 +241,21 @@
       <h2 class="section__title">Kontakt</h2>
       <p class="contact__subtitle">Pracuju na zajímavých projektech a vždy rád potkám nové lidi. Napiš mi!</p>
       <div class="contact__links">
-        <a href="mailto:david.novak@example.com" class="contact__link">
-          <span>✉️</span> david.novak@example.com
+        <a href="mailto:neky.david@gmail.com" class="contact__link">
+          <span>✉️</span> neky.david@gmail.com
         </a>
         <a href="https://github.com/dnekolny" class="contact__link" target="_blank">
           <span>🐙</span> github.com/dnekolny
         </a>
-        <a href="https://linkedin.com/in/david-novak-dev" class="contact__link" target="_blank">
-          <span>💼</span> linkedin.com/in/david-novak-dev
+        <a href="https://linkedin.com/in/david-nekolny" class="contact__link" target="_blank">
+          <span>💼</span> LinkedIn
         </a>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <p>© 2025 David Novák · Postaveno s ❤️ (a trochou AI magie 🤖)</p>
+    <p>© 2025 David Nekolný · Postaveno s ❤️ (a trochou AI magie 🤖)</p>
   </footer>
 
   <script src="script.js"></script>
