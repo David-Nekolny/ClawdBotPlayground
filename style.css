@@ -390,11 +390,10 @@ body.ascii-mode .ascii-toggle {
 }
 
 /* ========================
-   ASCII MODE
+   ASCII / EDITOR MODE
 ======================== */
 
-/* Helper: full-width text separator line (overflows + clips = fills any width) */
-/* Usage: set content to a long string of "─ ─ ─ ─ ..." chars */
+/* Helper: full-width text separator line */
 .ascii-sep {
   display: block;
   overflow: hidden;
@@ -407,110 +406,133 @@ body.ascii-mode .ascii-toggle {
 }
 
 body.ascii-mode {
-  --accent: #00ff41;
-  --accent-2: #39ff14;
-  --bg: #020d02;
-  --bg-dark: #010801;
-  --surface: #041504;
-  --surface-2: #071f07;
-  --text: #c8ffcc;
-  --text-muted: #5a9960;
-  --border: rgba(0,255,65,0.25);
+  /* VS Code Dark+ palette */
+  --accent:      #569cd6;   /* keyword blue */
+  --accent-2:    #ce9178;   /* string / value orange */
+  --accent-fn:   #dcdcaa;   /* function name yellow */
+  --accent-cmt:  #6a9955;   /* comment green */
+  --accent-type: #4ec9b0;   /* type teal */
+  --accent-num:  #b5cea8;   /* number green */
+  --bg:          #1e1e1e;
+  --bg-dark:     #1e1e1e;
+  --surface:     #252526;
+  --surface-2:   #2d2d2d;
+  --text:        #d4d4d4;
+  --text-muted:  #858585;
+  --border:      rgba(255,255,255,0.08);
   font-family: 'Courier New', Courier, monospace;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='14'%3E%3Ctext y='12' font-family='Courier New' font-size='10' fill='rgba(0%2C255%2C65%2C0.04)'%3E01101001011010000110100101100100%3C/text%3E%3C/svg%3E");
+  background-image: none;
 }
 
 /* Toggle */
 body.ascii-mode .ascii-toggle__on  { display: inline; }
 body.ascii-mode .ascii-toggle__off { display: none; }
+body.ascii-mode .ascii-toggle { border: 1px solid #555 !important; color: var(--text-muted); }
 
-/* Kill all border-radius + animations */
+/* Kill border-radius + animations */
 body.ascii-mode *,
 body.ascii-mode *::before,
 body.ascii-mode *::after {
   border-radius: 0 !important;
   animation: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
 }
 
-/* ── NAV ───────────────────────────────────────────── */
+/* ── NAV → Editor tab bar ──────────────────────────── */
 body.ascii-mode .nav {
-  border-bottom: none !important;
-  background: rgba(2,13,2,0.95);
-  position: relative;
+  background: #2d2d2d;
+  border-bottom: 1px solid #3e3e3e !important;
+  padding: 0 1rem;
+  min-height: 35px;
 }
-/* text line under nav */
-body.ascii-mode .nav::after {
-  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  overflow: hidden; white-space: nowrap;
-  font-family: 'Courier New', monospace; font-size: 0.7rem;
-  color: var(--accent); opacity: 0.45; line-height: 1;
+body.ascii-mode .nav__logo {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  -webkit-text-fill-color: var(--text-muted);
+  color: var(--text-muted);
+  background: none;
 }
-body.ascii-mode .nav__logo { font-family: 'Courier New', monospace; letter-spacing: 0.1em; }
-body.ascii-mode .nav__logo::before { content: '> '; }
-
-/* ── HERO ──────────────────────────────────────────── */
-body.ascii-mode .hero__tag { color: var(--accent); letter-spacing: 0.1em; }
-body.ascii-mode .hero__tag::before { content: '// '; }
-body.ascii-mode .hero__subtitle { color: var(--text-muted); }
-body.ascii-mode .hero__subtitle::before { content: '/* '; }
-body.ascii-mode .hero__subtitle::after  { content: ' */'; }
-
-/* ── BUTTONS: no border, text brackets ─────────────── */
-body.ascii-mode .btn--primary {
-  background: transparent;
-  border: none !important;
-  box-shadow: none;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-}
-body.ascii-mode .btn--primary::before { content: '[ '; }
-body.ascii-mode .btn--primary::after  { content: ' ]'; }
-
-body.ascii-mode .btn--outline {
-  border: none !important;
+body.ascii-mode .nav__links a {
+  font-size: 0.78rem;
   color: var(--text-muted);
 }
-body.ascii-mode .btn--outline::before { content: '[ '; }
-body.ascii-mode .btn--outline::after  { content: ' ]'; }
+body.ascii-mode .nav__links a:hover { color: var(--text); }
+body.ascii-mode .nav::after { display: none !important; }
 
-body.ascii-mode .btn:hover {
-  background: rgba(0,255,65,0.08);
-  transform: none;
-  box-shadow: none;
+/* ── HERO ──────────────────────────────────────────── */
+body.ascii-mode .hero__tag {
+  color: var(--accent-cmt);
+  font-size: 0.85rem; letter-spacing: 0;
 }
+body.ascii-mode .hero__tag::before { content: '// '; }
+body.ascii-mode .hero__subtitle {
+  color: var(--accent-2);
+  font-size: 0.95rem;
+}
+body.ascii-mode .hero__subtitle::before { content: '"'; }
+body.ascii-mode .hero__subtitle::after  { content: '"'; }
+body.ascii-mode .hero__name {
+  color: var(--accent-fn);
+  -webkit-text-fill-color: var(--accent-fn);
+  background: none;
+}
+body.ascii-mode .hero__name .accent {
+  color: var(--accent);
+  -webkit-text-fill-color: var(--accent);
+  background: none;
+}
+
+/* ── BUTTONS ────────────────────────────────────────── */
+body.ascii-mode .btn--primary {
+  background: var(--accent);
+  border: none !important;
+  color: #1e1e1e; font-weight: 700;
+  font-size: 0.82rem;
+  padding: 0.5rem 1.2rem;
+}
+body.ascii-mode .btn--primary:hover { background: #79b8e0; transform: none; }
+body.ascii-mode .btn--primary::before, body.ascii-mode .btn--primary::after { display: none !important; }
+body.ascii-mode .btn--outline {
+  background: transparent;
+  border: 1px solid #555 !important;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+body.ascii-mode .btn--outline:hover { border-color: var(--accent) !important; color: var(--text); transform: none; }
+body.ascii-mode .btn--outline::before, body.ascii-mode .btn--outline::after { display: none !important; }
 
 /* ── AVATAR ─────────────────────────────────────────── */
 body.ascii-mode .avatar-ring {
   background: none;
-  border: 2px solid var(--accent); /* circle ring — text can't be circular */
-  box-shadow: 0 0 20px rgba(0,255,65,0.3), inset 0 0 20px rgba(0,255,65,0.05);
+  border: 1px solid #555 !important;
 }
 body.ascii-mode .avatar-inner {
-  font-size: 1.6rem; font-family: 'Courier New', monospace;
-  -webkit-text-fill-color: var(--accent); color: var(--accent);
-  background: none; letter-spacing: -0.05em; line-height: 1.2;
-  display: flex; align-items: center; justify-content: center;
-  text-shadow: 0 0 10px rgba(0,255,65,0.8);
+  font-size: 1rem; font-family: 'Courier New', monospace;
+  -webkit-text-fill-color: var(--accent-fn);
+  color: var(--accent-fn);
+  background: none; line-height: 1.5;
 }
 body.ascii-mode .avatar-inner::before {
-  content: ".--.\n|DN|\n'--'";
-  white-space: pre; font-size: 1.4rem;
+  content: " ┌────┐\n │ DN │\n └────┘";
+  white-space: pre; font-size: 1.1rem;
 }
 
 /* ── SECTION TITLES ─────────────────────────────────── */
-body.ascii-mode .section__title { letter-spacing: 0.1em; }
-body.ascii-mode .section__title::before { content: '## '; color: var(--accent); }
-/* text underline instead of border-bottom */
+body.ascii-mode .section__title {
+  color: var(--accent-cmt);
+  letter-spacing: 0; font-size: 1.1rem; font-weight: 400;
+}
+body.ascii-mode .section__title::before { content: '// '; color: var(--accent-cmt); }
 body.ascii-mode .section__title::after {
-  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
+  content: '────────────────────────────────────────';
   display: block; overflow: hidden; white-space: nowrap;
   font-family: 'Courier New', monospace; font-size: 0.7rem;
-  color: var(--accent); background: none; border: none;
-  opacity: 0.55; margin-top: 0.3rem; width: 100%;
+  color: var(--accent-cmt); background: none; border: none;
+  opacity: 0.4; margin-top: 0.3rem; width: 100%;
 }
 
-/* ── CARDS: JS text boxes, no CSS border ────────────── */
+/* ── CARDS ───────────────────────────────────────────── */
 .ascii-box {
   position: absolute; inset: 0;
   pointer-events: none; z-index: 0;
@@ -519,119 +541,89 @@ body.ascii-mode .section__title::after {
 body.ascii-mode .skill-card,
 body.ascii-mode .project-card {
   border: none !important;
-  box-shadow: none !important;
   background: var(--surface);
   position: relative;
 }
 body.ascii-mode .skill-card::before, body.ascii-mode .skill-card::after,
-body.ascii-mode .project-card::before, body.ascii-mode .project-card::after {
-  display: none !important;
-}
+body.ascii-mode .project-card::before, body.ascii-mode .project-card::after { display: none !important; }
 body.ascii-mode .skill-card > *:not(.ascii-box),
-body.ascii-mode .project-card > *:not(.ascii-box) {
-  position: relative; z-index: 1;
-}
+body.ascii-mode .project-card > *:not(.ascii-box) { position: relative; z-index: 1; }
 body.ascii-mode .skill-card:hover,
-body.ascii-mode .project-card:hover {
-  box-shadow: none !important; transform: none;
-}
+body.ascii-mode .project-card:hover { transform: none; background: #2a2a2a; }
 
-body.ascii-mode .skill-card__icon { filter: grayscale(1); }
-body.ascii-mode .skill-card h3::before    { content: '> '; color: var(--accent); }
-body.ascii-mode .project-card h3::before  { content: '$ '; color: var(--accent); }
+body.ascii-mode .skill-card__icon { filter: grayscale(1) brightness(0.6); }
+body.ascii-mode .skill-card h3 { color: var(--accent-fn); font-weight: 400; }
+body.ascii-mode .skill-card h3::before { content: 'function '; color: var(--accent); font-size: 0.8em; }
+body.ascii-mode .project-card h3 { color: var(--accent-fn); font-weight: 400; }
+body.ascii-mode .project-card h3::before { content: 'const '; color: var(--accent); font-size: 0.8em; }
 
-/* list item separators → text dots */
-body.ascii-mode .skill-card ul li {
-  border-bottom: none !important;
-}
-body.ascii-mode .skill-card ul li::before {
-  content: '· ';
-  color: var(--accent); opacity: 0.7;
-}
+body.ascii-mode .skill-card ul li { border-bottom: none !important; color: var(--accent-2); }
+body.ascii-mode .skill-card ul li::before { content: '  "'; color: var(--accent-cmt); }
+body.ascii-mode .skill-card ul li::after  { content: '",'; color: var(--accent-cmt); }
 
-/* ── PROJECT TAGS: no border, text brackets ─────────── */
+/* ── PROJECT TAGS ────────────────────────────────────── */
 body.ascii-mode .project-card__tag {
-  background: transparent;
-  border: none !important;
-  color: var(--accent); letter-spacing: 0.1em; font-size: 0.7rem;
+  background: #37373d; border: none !important;
+  color: var(--accent-type); font-size: 0.7rem;
 }
-body.ascii-mode .project-card__tag::before { content: '['; }
-body.ascii-mode .project-card__tag::after  { content: ']'; }
-
-/* tech tags: no border, <angle> wrappers */
+body.ascii-mode .project-card__year { color: var(--text-muted); }
+body.ascii-mode .project-card p { color: var(--text-muted); font-size: 0.85rem; }
 body.ascii-mode .project-card__tech span {
-  background: transparent;
-  border: none !important;
-  color: var(--text-muted);
+  background: #37373d; border: none !important;
+  color: var(--accent-num);
 }
-body.ascii-mode .project-card__tech span::before { content: '<'; }
-body.ascii-mode .project-card__tech span::after  { content: '>'; }
 
-/* ── TIMELINE: vertical text chars instead of border-left */
+/* ── TIMELINE ────────────────────────────────────────── */
 body.ascii-mode .timeline__item {
   border-left: none !important;
-  /* vertical │ chars rendered via repeating SVG background */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='20'%3E%3Ctext y='16' font-family='Courier New' font-size='14' fill='rgba(0%2C255%2C65%2C0.35)'%3E%7C%3C/text%3E%3C/svg%3E");
-  background-repeat: repeat-y;
-  background-position: left top;
-  background-size: 10px 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='20'%3E%3Ctext y='16' font-family='Courier New' font-size='14' fill='rgba(86%2C156%2C214%2C0.3)'%3E%7C%3C/text%3E%3C/svg%3E");
+  background-repeat: repeat-y; background-position: left top; background-size: 10px 20px;
 }
 body.ascii-mode .timeline__item::before {
-  background: var(--accent); box-shadow: 0 0 6px var(--accent);
-  content: '*'; color: var(--accent); display: flex;
-  align-items: center; justify-content: center;
-  font-family: 'Courier New', monospace; font-size: 0.6rem;
+  content: '●'; color: var(--accent); background: var(--bg);
+  font-size: 0.6rem; display: flex; align-items: center; justify-content: center;
 }
-body.ascii-mode .timeline__year { color: var(--accent); }
-body.ascii-mode .timeline__content h4::before { content: '→ '; }
+body.ascii-mode .timeline__year { color: var(--accent-num); }
+body.ascii-mode .timeline__content h4 { color: var(--accent-fn); font-weight: 400; }
+body.ascii-mode .timeline__content h4::before { content: 'commit '; color: var(--accent-cmt); font-size: 0.75em; }
+body.ascii-mode .timeline__content p { color: var(--text-muted); }
 
 /* ── STATS ───────────────────────────────────────────── */
 body.ascii-mode .stat__number {
-  -webkit-text-fill-color: var(--accent); color: var(--accent);
-  background: none; text-shadow: 0 0 10px rgba(0,255,65,0.5); font-size: 2rem;
+  -webkit-text-fill-color: var(--accent-fn);
+  color: var(--accent-fn); background: none; font-size: 2rem;
 }
+body.ascii-mode .stat__label { color: var(--text-muted); }
 
-/* ── SECTIONS: text lines instead of borders ────────── */
+/* ── SECTIONS ────────────────────────────────────────── */
 body.ascii-mode .section--dark {
   background: var(--surface);
-  border-top: none !important;
-  border-bottom: none !important;
-  position: relative;
+  border-top: 1px solid #3e3e3e !important;
+  border-bottom: 1px solid #3e3e3e !important;
 }
-body.ascii-mode .section--dark::before,
-body.ascii-mode .section--dark::after {
-  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
-  display: block; overflow: hidden; white-space: nowrap;
-  font-family: 'Courier New', monospace; font-size: 0.7rem;
-  color: var(--accent); opacity: 0.3; line-height: 1.4;
-  padding: 0 2rem;
-}
+body.ascii-mode .section--dark::before, body.ascii-mode .section--dark::after { display: none !important; }
 
-/* ── CONTACT LINKS: no border, text brackets ────────── */
+/* ── CONTACT ─────────────────────────────────────────── */
 body.ascii-mode .contact__link {
-  border: none !important;
-  font-family: 'Courier New', monospace; letter-spacing: 0.05em;
-}
-body.ascii-mode .contact__link::before { content: '[ '; }
-body.ascii-mode .contact__link::after  { content: ' ]'; }
-body.ascii-mode .contact__link:hover {
-  color: var(--accent); box-shadow: none; transform: none;
-}
-
-/* ── FOOTER: text line instead of border-top ─────────── */
-body.ascii-mode .footer {
-  border-top: none !important;
+  border: 1px solid #3e3e3e !important;
   font-family: 'Courier New', monospace;
+  color: var(--accent-2);
 }
-body.ascii-mode .footer::before {
-  content: '─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─';
-  display: block; overflow: hidden; white-space: nowrap;
-  font-family: 'Courier New', monospace; font-size: 0.7rem;
-  color: var(--accent); opacity: 0.35; line-height: 1.4;
-  margin-bottom: 0.5rem;
+body.ascii-mode .contact__link::before, body.ascii-mode .contact__link::after { display: none !important; }
+body.ascii-mode .contact__link:hover { border-color: var(--accent) !important; color: var(--text); transform: none; }
+body.ascii-mode .contact__subtitle { color: var(--text-muted); }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+body.ascii-mode .footer {
+  border-top: 1px solid #3e3e3e !important;
+  font-family: 'Courier New', monospace;
+  color: var(--text-muted); font-size: 0.8rem;
+  background: #252526;
 }
+body.ascii-mode .footer::before { display: none !important; }
 
 /* ── SCROLLBAR ───────────────────────────────────────── */
-body.ascii-mode ::-webkit-scrollbar { width: 6px; }
-body.ascii-mode ::-webkit-scrollbar-track { background: var(--bg); }
-body.ascii-mode ::-webkit-scrollbar-thumb { background: var(--accent); }
+body.ascii-mode ::-webkit-scrollbar { width: 10px; }
+body.ascii-mode ::-webkit-scrollbar-track { background: #1e1e1e; }
+body.ascii-mode ::-webkit-scrollbar-thumb { background: #555; }
+body.ascii-mode ::-webkit-scrollbar-thumb:hover { background: #777; }
